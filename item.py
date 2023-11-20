@@ -10,17 +10,35 @@ class Item:
         assert price >= 0, f'Prise {price} is not grater or equally than 0'
         assert quantity >= 0, f'Quantity {quantity} is not grater or equally than 0'
 
-        self.name = name
-        self.price = price
+        self.__name = name
+        self.__price = price
         self.quantity = quantity
 
         Item.all.append(self)
 
-    def calculate_total_price(self):
-        return self.price * self.quantity
+    @property
+    def prise(self):
+        return self.__price
 
     def apply_discount(self):
-        self.price = self.price * self.pay_rate
+        self.__price = self.__price * self.pay_rate
+
+    def apply_increment(self, increment_value):
+        self.__price = self.__price + self.__price * increment_value
+
+    @property
+    def name(self):
+        return self.__name
+
+    @name.setter
+    def name(self, value):
+        if len(value) > 10:
+            raise Exception("Name is too long")
+        else:
+            self.__name = value
+
+    def calculate_total_price(self):
+        return self.__price * self.quantity
 
     @classmethod
     def instantiate_from_csv(cls):
@@ -45,4 +63,6 @@ class Item:
             return False
 
     def __repr__(self):
-        return f"{self.__class__.__name__}('{self.name}', {self.price}, {self.quantity})"
+        return f"{self.__class__.__name__}('{self.name}', {self.__price}, {self.quantity})"
+
+

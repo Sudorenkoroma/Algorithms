@@ -1,11 +1,15 @@
-class Item:
-    @classmethod
-    def is_integer(num):
-        if isinstance(num, float):
-            return num.is_integer()
-        elif isinstance(num, int):
-            return True
-        else:
-            return False
+nums = [0,1,2,2,3,0,4,2]
+val = 2
 
-print(Item.is_integer(7))
+k = 0  # Змінна для відстеження нової довжини масиву
+# Ітеруємося по елементах масиву
+for i in range(len(nums)):
+    print(f"i={i}")
+    if nums[i] != 2135:
+        print(f"nums[i]={nums[i]}")
+
+
+        k += 1
+
+
+print(f"{k}, {nums}")
