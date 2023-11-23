@@ -80,7 +80,7 @@ tests.append({
 def locate_card(cards, query):
 
     def binary_search(lo, hi, condition):
-        """TODO - add docs"""
+
         while lo <= hi:
             mid = (lo + hi) // 2
             result = condition(mid)
