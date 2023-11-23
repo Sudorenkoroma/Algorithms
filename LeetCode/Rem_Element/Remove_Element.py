@@ -9,7 +9,6 @@ class Solution:
                 nums[k] = nums[i]
                 # print(nums)
                 k += 1
-        nums[:] = nums[:k]
         return k, nums
 
 # Приклад виклику функції
