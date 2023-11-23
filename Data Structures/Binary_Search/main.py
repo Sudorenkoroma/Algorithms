@@ -77,7 +77,8 @@ tests.append({
 })
 
 
-def locate_card(cards, query):
+def locate_card(cards, query):     # must add first_and_last_position
+
 
     def binary_search(lo, hi, condition):
 
