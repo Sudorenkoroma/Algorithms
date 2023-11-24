@@ -1,26 +1,20 @@
-def square_even(array, length):
-    # Check for edge cases.
+def square_even(array):
+    # Перевірка на крайовий випадок.
     if array is None:
-        return None
+        return array
 
-    # Create a resultant array which would hold the result.
-    result = [0] * length
-
-    # Iterate through the original array.
-    for i in range(length):
-        # Get the element from index i of the input array.
-        element = array[i]
-
-        # If the index is an even number, then square the element.
+    # Ітеруємося по вихідному масиву.
+    for i in range(len(array)):
+        # Якщо індекс парний, ми повинні підняти елемент у квадрат
+        # і замінити оригінальне значення в масиві.
         if i % 2 == 0:
-            element *= element
+            array[i] *= array[i]
+        # Зверніть увагу, що нам не потрібно *нічого* робити для непарних індексів. :-)
 
-        # Write the element into the result array.
-        result[i] = element
-
-    # Return the result array.
-    return result
+    # Просто повертаємо оригінальний масив. У деяких задачах на LeetCode вимагається його повернення, а в інших - ні.
+    return array
 
 original_array = [1, 2, 3, 4, 5]
 result_array = square_even(original_array, len(original_array))
 print(result_array)
+
