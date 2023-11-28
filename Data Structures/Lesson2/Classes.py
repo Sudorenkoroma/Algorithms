@@ -99,4 +99,3 @@ def parse_tuple(data):
     else:
         node = TreeNode(data)
     return node
-
