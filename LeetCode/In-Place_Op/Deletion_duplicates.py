@@ -22,4 +22,3 @@ Output: [0, 1, 2, 3, 4]
 res = Solution()
 resolt = res.removeDuplicates(array)
 print(resolt)
-

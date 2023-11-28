@@ -1,15 +1,6 @@
-nums = [0,1,2,2,3,0,4,2]
-val = 2
-
-k = 0  # Змінна для відстеження нової довжини масиву
-# Ітеруємося по елементах масиву
-for i in range(len(nums)):
-    print(f"i={i}")
-    if nums[i] != 2135:
-        print(f"nums[i]={nums[i]}")
-
-
-        k += 1
-
-
-print(f"{k}, {nums}")
+nums = [4,3,2,7,8,2,3,1]
+for num in nums:
+    index = abs(num) - 1
+    print(f"i{index},nums[i]{nums[index]}")
+    nums[index] = -abs(nums[index])
+print(nums)

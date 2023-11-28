@@ -9,11 +9,11 @@ class Solution:
                 nums[k] = nums[i]
                 # print(nums)
                 k += 1
-        return k, nums
+        return nums
 
 # Приклад виклику функції
 nums = [3,2,2,3]
 val = 3
 solution = Solution()
-result, modified_nums = solution.removeElement(nums, val)
-print(result, modified_nums)
+result = solution.removeElement(nums, val)
+print(result)
