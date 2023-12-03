@@ -181,6 +181,36 @@ class BSTNode():
             return []
         return BSTNode.list_all(self.left) + [(self.key, self.value)] + BSTNode.list_all(self.right)
 
+    def is_balanced(self):
+        def _is_balanced(node):
+            if node is None:
+                return True, 0
+            balanced_l, height_l = _is_balanced(node.left)
+            balanced_r, height_r = _is_balanced(node.right)
+            balanced = balanced_l and balanced_r and abs(height_l - height_r) <= 1
+            height = 1 + max(height_l, height_r)
+            return balanced, height
+
+        return _is_balanced(self)
+
+
+def make_balanced_bst(data, lo=0, hi=None, parent=None):
+    if hi is None:
+        hi = len(data) - 1
+    if lo > hi:
+        return None
+
+    mid = (lo + hi) // 2
+    key, value = data[mid]
+
+    root = BSTNode(key, value)
+    root.parent = parent
+    root.left = make_balanced_bst(data, lo, mid - 1, root)
+    root.right = make_balanced_bst(data, mid + 1, hi, root)
+
+    return root
+
+
 
 node = TreeNode(2)
 node1 = TreeNode(3)
@@ -258,6 +288,8 @@ tree2.insert(sonaksh.username, sonaksh)
 tree2.insert(vishal.username, vishal)
 
 # tree2.display_keys("  ")
-node = BSTNode.list_all(tree)
+data = BSTNode.list_all(tree)
+tree = make_balanced_bst(data)
+res = BSTNode.display_keys(tree)
+print(res)
 
-print(node)
