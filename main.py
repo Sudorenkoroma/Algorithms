@@ -11,7 +11,7 @@ class Solution:
 
 
 
-arr = [1,2,3]
+arr = [1,2,3,0,0]
 arr1 = Solution()
 arr1.duplicateZeros(arr)
 print(arr)
