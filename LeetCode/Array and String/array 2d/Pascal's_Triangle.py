@@ -13,3 +13,5 @@ result = generate_pascals_triangle(numRows)
 
 for row in result:
     print(row)
+
+# fvoizdfhvidh
