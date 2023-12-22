@@ -1,8 +1,4 @@
-import TensorFlow1 as tf
-# from keras import
-#
-# import mnist
-# import imageio
+import tensorflow as tf
+from tensorflow.examples.tutorials.mnist import input_data
 
-# images = mnist.train_images()
-# imageio.imwrite("negative_image.png", -1 + 256)
+mnist = input_data.read_data_sets("MNIST_data/", one_hot=True)  # y labels are oh-encoded

@@ -73,7 +73,7 @@ xtrain, xtest, ytrain, ytest = train_test_split(x, y,
                                                 test_size=0.10,
                                                 random_state=42)
 
-# creating the LSTM neural network modelpip install dm-tree --no DLIB_GIF_SUPPORT
+# creating the LSTM neural network model
 from keras.models import Sequential
 from keras.layers import Dense, LSTM
 model = Sequential()
@@ -82,3 +82,17 @@ model.add(LSTM(64, return_sequences=False))
 model.add(Dense(25))
 model.add(Dense(1))
 model.summary()
+
+# training the model
+# model.compile(optimizer='adam', loss='mean_squared_error')
+# model.fit(xtrain, ytrain, batch_size=1, epochs=9)
+
+mod = model
+
+print("Food Delivery Time Prediction")
+a = int(input("Age of Delivery Partner: "))
+b = float(input("Ratings of Previous Deliveries: "))
+c = int(input("Total Distance: "))
+
+features = np.array([[a, b, c]])
+print("Predicted Delivery Time in Minutes = ", mod.predict(features))

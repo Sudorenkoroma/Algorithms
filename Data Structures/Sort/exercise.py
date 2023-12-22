@@ -1,31 +1,25 @@
-def multilevel_selection_sort(elements, sort_by_list):
-    for sort_by in sort_by_list[-1::-1]:
-        for x in range(len(elements)):
-            min_index = x
-            for y in range(x, len(elements)):
-                if elements[y][sort_by] < elements[min_index][sort_by]:
-                    min_index = y
-            if x != min_index:
-                elements[x], elements[min_index] = elements[min_index], elements[x]
+def shell_sort(arr):
+    size = len(arr)
+    gap = size//2
+    index_count = []
+
+    while gap > 0:
+        for i in range(gap,size):
+            anchor = arr[i]
+            j = i
+            while j>=gap and arr[j-gap]>anchor:
+                arr[j] = arr[j-gap]
+                j -= gap
+            arr[j] = anchor
+            if arr[j] == arr[j-1]:
+                index_count.append(j-1)
+        gap = gap // 2
+    for i in range(len(arr)-1,-1,-1):
+        if index_count and i == index_count[-1]:
+            arr.pop(i)
+            index_count.pop()
 
 
-if __name__ == '__main__':
-    elements = [
-        {'First Name': 'Raj', 'Last Name': 'Nayyar'},
-        {'First Name': 'Suraj', 'Last Name': 'Sharma'},
-        {'First Name': 'Karan', 'Last Name': 'Kumar'},
-        {'First Name': 'Jade', 'Last Name': 'Canary'},
-        {'First Name': 'Raj', 'Last Name': 'Thakur'},
-        {'First Name': 'Raj', 'Last Name': 'Sharma'},
-        {'First Name': 'Kiran', 'Last Name': 'Kamla'},
-        {'First Name': 'Armaan', 'Last Name': 'Kumar'},
-        {'First Name': 'Jaya', 'Last Name': 'Sharma'},
-        {'First Name': 'Ingrid', 'Last Name': 'Galore'},
-        {'First Name': 'Jaya', 'Last Name': 'Seth'},
-        {'First Name': 'Armaan', 'Last Name': 'Dadra'},
-        {'First Name': 'Ingrid', 'Last Name': 'Maverick'},
-        {'First Name': 'Aahana', 'Last Name': 'Arora'}
-    ]
-
-    multilevel_selection_sort(elements, ['First Name', 'Last Name'])
-    print(f'Array after Multi-Level Sorting:', *elements, sep='\n')
+elements = [2, 1, 5, 7, 2, 0, 5, 1, 2, 9, 5, 8, 3]
+shell_sort(elements)
+print(elements)
