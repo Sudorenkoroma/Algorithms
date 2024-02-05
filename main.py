@@ -1,19 +1,24 @@
-def strStr(haystack, needle):
-    # Check if the needle is an empty string
-    if not needle:
-        return 0
+class Solution:
+    def findTargetSumWays(self, nums: list[int], target: int) -> int:
 
-    # Iterate through the haystack characters
-    for i in range(len(haystack) - len(needle) + 1):
-        # Check if the substring of haystack matches the needle
-        if haystack[i:i + len(needle)] == needle:
-            return i
+        dp = {}
 
-    # If no match is found, return -1
-    return -1
+        def dfs(index, total):
+            if index == len(nums) - 1:
+                if total == target:
+                    return 1
+                else:
+                    return 0
+            if (index, total) in dp:
+                return dp[(index, total)]
+            dp[(index, total)] = dfs(index + 1, total + nums[index + 1]) + dfs(index + 1, total - nums[index + 1])
+            return dp[(index, total)]
 
-# Example usage
-haystack = "butsad"
-needle = "sad"
-result = strStr(haystack, needle)
-print(result)
+        return dfs(-1, 0)
+
+
+nums = [1,1,1,1,1]
+target = 33
+sol = Solution()
+res = sol.findTargetSumWays(nums, target)
+print(res)
