@@ -3,44 +3,30 @@ from collections import deque
 
 class Solution:
     def updateMatrix(self, mat: list[list[int]]) -> list[list[int]]:
-        if not mat:
-            return []
-
-        rows, cols = len(mat), len(mat[0])
-        directions = [(0, 1), (0, -1), (1, 0), (-1, 0)]
-
-        # Create a result matrix initialized with maximum possible values
-        result = [[float('inf')] * cols for _ in range(rows)]
-
-        # Create a queue for BFS
+        row = len(mat)
+        col = len(mat[0])
+        remade = [[float("inf")]*col for _ in range(row)]
         queue = deque()
+        dimention = [(0,1),(0,-1),(-1,0),(1,0)]
+        for r in range(row):
+            for c in range(col):
+                if mat[r][c] == 0:
+                    remade[r][c] = 0
+                    queue.append((r, c))
 
-        # Initialize the queue with 0s and mark them as visited
-        for i in range(rows):
-            for j in range(cols):
-                if mat[i][j] == 0:
-                    result[i][j] = 0
-                    queue.append((i, j))
-
-        # Perform BFS to find the nearest 0 for each cell
         while queue:
-            x, y = queue.popleft()
+            r, c = queue.popleft()
+            for x, y in dimention:
+                new_r, new_c = x+r, y+c
+                if 0 <= new_r <= row-1 and 0 <= new_c <= col-1:
+                    if remade[new_r][new_c] > remade[r][c]:
+                        remade[new_r][new_c] = remade[r][c] + 1
+                        queue.append((new_r, new_c))
 
-            # Explore the four possible directions
-            for dx, dy in directions:
-                new_x, new_y = x + dx, y + dy
-
-                # Check if the new coordinates are within bounds
-                if 0 <= new_x < rows and 0 <= new_y < cols:
-                    # If the current distance is greater than the new distance + 1
-                    if result[new_x][new_y] > result[x][y] + 1:
-                        result[new_x][new_y] = result[x][y] + 1
-                        queue.append((new_x, new_y))
-
-        return result
+        return remade
 
 
-mat = [[0,0,0],[0,1,0],[1,1,1]]
+mat = [[0,0,1],[0,1,1],[1,1,1]]
 
 res = Solution()
 sol = res.updateMatrix(mat)

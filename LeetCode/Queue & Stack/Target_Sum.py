@@ -1,25 +1,24 @@
 class Solution:
     def findTargetSumWays(self, nums: list[int], target: int) -> int:
         dp = {}
-        def dfs(index, current_sum):
-            # Base case: if we reach the end of the array
+        def dfs (index,count):
             if index == len(nums):
-                if current_sum == target:
+                if count == target:
                     return 1
                 else:
                     return 0
-            if (index, current_sum) in dp:
-                return dp[(index, current_sum)]
-            # Use DFS to explore two possibilities: adding or subtracting the current number
-            dp[(index, current_sum)] = dfs(index + 1, current_sum + nums[index]) + dfs(index + 1, current_sum - nums[index])
-            return dp[(index, current_sum)]
+            if (index, count) in dp:
+                return dp [(index, count)]
+            dp[(index, count)] = dfs(index+1, count + nums[index]) + dfs(index+1, count - nums[index])
 
-        return dfs(0, 0)
+            return dp[(index, count)]
+
+        return dfs(0,0)
 
 
 
 nums = [1,1,1,1,1]
-target = 2
+target = 3
 sol = Solution()
 res = sol.findTargetSumWays(nums, target)
 print(res)
