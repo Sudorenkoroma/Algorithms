@@ -26,11 +26,19 @@ The LeetCode directory contains my solutions to problems
 from LeetCode, categorized based on problem types and approaches:
 
 -Array and String: Solutions to array and string manipulation problems.
+
 -Binary_Search: Algorithms related to binary search problems.
+
 -Conclusion: Wrap-up and summary of key learnings.
+
 -In-Place_Op: In-place operations and algorithms.
+
 -Queue & Stack: Problems involving queue and stack data structures.
+
 -Rem_Element: Removal operations and algorithms.
+
 -Search_in_array: Algorithms and solutions for searching within arrays.
+
 -String: Manipulation and algorithms for string-related problems.
+
 -Two-pointer: Algorithms and solutions utilizing the two-pointer technique.
