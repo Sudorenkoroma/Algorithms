@@ -6,12 +6,19 @@ implementations of various data structures, each located in
 a folder named after its respective type:
 
 -Binary_Search: Implementation of algorithms related to binary search.
+
 -Binary_tree: Data structures and algorithms concerning binary trees.
+
 -Graph: Graph data structure implementations.
+
 -Hash: Hash table implementations and related algorithms.
+
 -Sort: Sorting algorithms implemented in Python.
+
 -Stack: Implementation of stack data structure.
+
 -linked_list: Linked list data structure implementations.
+
 -recursion.py: Examples and exercises demonstrating recursion concepts.
 
 LeetCode Solutions
